@@ -1,6 +1,11 @@
 # Release Notes
 
-## [Unreleased](https://github.com/laravel/vite-plugin/compare/v1.0.2...1.x)
+## [Unreleased](https://github.com/laravel/vite-plugin/compare/v1.0.3...1.x)
+
+## [v1.0.3](https://github.com/laravel/vite-plugin/compare/v1.0.2...v1.0.3) - 2024-05-16
+
+* Append base to hot file by [@timacdonald](https://github.com/timacdonald) in https://github.com/laravel/vite-plugin/pull/290
+* Support Laravel Herd for windows by [@mozex](https://github.com/mozex) in https://github.com/laravel/vite-plugin/pull/293
 
 ## [v1.0.2](https://github.com/laravel/vite-plugin/compare/v1.0.1...v1.0.2) - 2024-02-28
 
