@@ -84,7 +84,7 @@ interface LaravelPlugin extends Plugin {
     config: (config: UserConfig, env: ConfigEnv) => UserConfig
 }
 
-type DevServerUrl = `${'http'|'https'}://${string}:${number}${string}`
+type DevServerUrl = `${'http'|'https'}://${string}:${number}`
 
 let exitHandlersBound = false
 
@@ -204,7 +204,8 @@ function resolveLaravelPlugin(pluginConfig: Required<PluginConfig>): LaravelPlug
                 const isAddressInfo = (x: string|AddressInfo|null|undefined): x is AddressInfo => typeof x === 'object'
                 if (isAddressInfo(address)) {
                     viteDevServerUrl = userConfig.server?.origin ? userConfig.server.origin as DevServerUrl : resolveDevServerUrl(address, server.config, userConfig)
-                    fs.writeFileSync(pluginConfig.hotFile, viteDevServerUrl)
+
+                    fs.writeFileSync(pluginConfig.hotFile, `${viteDevServerUrl}${server.config.base.replace(/\/$/, '')}`)
 
                     setTimeout(() => {
                         server.config.logger.info(`\n  ${colors.red(`${colors.bold('LARAVEL')} ${laravelVersion()}`)}  ${colors.dim('plugin')} ${colors.bold(`v${pluginVersion()}`)}`)
@@ -431,9 +432,8 @@ function resolveDevServerUrl(address: AddressInfo, config: ResolvedConfig, userC
 
     const configHmrClientPort = typeof config.server.hmr === 'object' ? config.server.hmr.clientPort : null
     const port = configHmrClientPort ?? address.port
-    const base = config.base.replace(/\/$/, '')
 
-    return `${protocol}://${host}:${port}${base}`
+    return `${protocol}://${host}:${port}`
 }
 
 function isIpv6(address: AddressInfo): boolean {
