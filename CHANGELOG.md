@@ -1,6 +1,10 @@
 # Release Notes
 
-## [Unreleased](https://github.com/laravel/vite-plugin/compare/v1.0.3...1.x)
+## [Unreleased](https://github.com/laravel/vite-plugin/compare/v1.0.4...1.x)
+
+## [v1.0.4](https://github.com/laravel/vite-plugin/compare/v1.0.3...v1.0.4) - 2024-05-17
+
+* Include base in hotFile without modifying server.origin replacement by [@danielztolnai](https://github.com/danielztolnai) in https://github.com/laravel/vite-plugin/pull/296
 
 ## [v1.0.3](https://github.com/laravel/vite-plugin/compare/v1.0.2...v1.0.3) - 2024-05-16
 
